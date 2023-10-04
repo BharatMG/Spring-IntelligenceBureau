@@ -13,7 +13,6 @@ import lombok.ToString;
 @ToString
 @Component
 public class IntelligenceBureauDTO {
-	
 	private int id;
 	private String officerName;
 	private String designation;
@@ -21,7 +20,7 @@ public class IntelligenceBureauDTO {
 	private String email;
 	private long mobileNumber;
 	private String isMarried;
-	private String permanentrAddress;
+	private String permanentAddress;
 	private String workingAddress;
 	private double basicPayScale;
 	

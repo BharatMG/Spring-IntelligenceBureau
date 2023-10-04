@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <title>footer</title>
 <style>
 .fclass{
@@ -22,7 +22,7 @@ position:inherit;
 }
 h4{
 position:absolute;
-left:65%;
+left:30%;
 }
 .pl{
 right:25%;
@@ -38,21 +38,11 @@ text-align:right;
 <footer class="fclass">
 
 <div class="container">
-<a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-facebook">Facebook</i></a>
-<a href="https://www.instagram.com/accounts/login/" target="_blank"><i class="fa-brands fa-instagram">Instagram</i></a>
+<a href="https://www.facebook.com/login/" target="_blank"><i class="bi bi-facebook"></i></i></a>
+<a href="https://www.instagram.com/accounts/login/" target="_blank"><i class="bi bi-instagram"></i></a>
 
-<i class="fa-brands fa-facebook fa-sm"></i>
-
-<!-- <a  
-         class="btn btn-link btn-floating btn-lg text-white m-1"
-        href="https://www.youtube.com/"
-        role="button"
-        data-mdb-ripple-color="white"
-        >iiiiii<i class="fab fa-twitter"></i
-      ></a> -->
-
- <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D" target="_blank"><i class="fa-brands fa-twitter" >twitter</i></a>
-<a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube" >youtube</i></a>
+ <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D" target="_blank"><i class="bi bi-twitter"></i></a>
+<a href="https://accounts.google.com/AddSession/identifier?hl=en&continue=https%3A%2F%2Fmail.google.com&service=mail&ec=GAlAFw&authuser=0&theme=glif&flowName=GlifWebSignIn&flowEntry=AddSession" target="_blank"><i class="bi bi-envelope-at-fill"></i></a>
 </div>
 
 
