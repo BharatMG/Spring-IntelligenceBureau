@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css">
- --><!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -12,12 +10,11 @@
 .fclass{
 margin:0;
 padding:0;
-
-background-color:#006;
+background-color:#001;
 width:100%;
 height:24vh;
 color:white;
-bottom:20vh;
+bottom:59vh;
 position:inherit;
 }
 h4{
@@ -45,15 +42,6 @@ text-align:right;
 <a href="https://accounts.google.com/AddSession/identifier?hl=en&continue=https%3A%2F%2Fmail.google.com&service=mail&ec=GAlAFw&authuser=0&theme=glif&flowName=GlifWebSignIn&flowEntry=AddSession" target="_blank"><i class="bi bi-envelope-at-fill"></i></a>
 </div>
 
-
-
-     <!-- <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-github"></i
-      ></a> -->
       <span class="pl">
 <a href="index.jsp"><i class="fa-brands fa-youtube" >Home</i></a>
 </span>

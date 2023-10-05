@@ -7,6 +7,8 @@
 <title>Intelligence-Bureau</title>
 </head>
 <body>
+<%@include file="nav.jsp"%>
 
+ <%@include file="footer.jsp"%>
 </body>
 </html>

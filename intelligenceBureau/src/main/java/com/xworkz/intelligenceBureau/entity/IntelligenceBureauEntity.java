@@ -8,12 +8,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+@AllArgsConstructor
 @Entity
+@NoArgsConstructor
 @Data
 @Table(name = "intelligenceBureau_info")
-@NamedQuery(name="readAll", query="select e from IntelligenceBureauEntity e")
+@NamedQueries({
+	@NamedQuery(name="readAll", query="select e from IntelligenceBureauEntity e") ,
+	@NamedQuery(name ="findByName", query = "select e from IntelligenceBureauEntity e where e.officerName=:name"),
+	@NamedQuery(name ="findByEmail", query = "select e from IntelligenceBureauEntity e where e.email=:email")
+})
 public class IntelligenceBureauEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

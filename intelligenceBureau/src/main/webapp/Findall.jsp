@@ -15,11 +15,11 @@
 </head>
 <body>
 <%@include file="nav.jsp"%>
-<h1>Reading All Data</h1>
+<!-- <h1>Reading All Data</h1> -->
 <form action="read" method="get">
-<input type="submit">
+
 <div style="text-align: center;">
-		<h1 class="text-center">Registration form</h1>
+		<h1 class="text-center">Reading All Data</h1>
 		<table class="table table-bordered">
 			<tbody>
 				<tr>
@@ -48,6 +48,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
+</div>
+<div class="text-center">
+<input type="submit" >
 </div>
 </form>
  <%@include file="footer.jsp"%>

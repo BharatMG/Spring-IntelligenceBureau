@@ -59,4 +59,40 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 		return list;
 	}
 
+	@Override
+	public IntelligenceBureauEntity findById(int id) {
+		System.out.println("findById");
+		EntityManager manager = factory.createEntityManager();
+		IntelligenceBureauEntity entity = manager.find(IntelligenceBureauEntity.class, id);
+		return entity;
+	}
+
+	@Override
+	public List<IntelligenceBureauEntity> findByName(String officerName) {
+
+		EntityManager manager = factory.createEntityManager();
+
+		Query query = manager.createNamedQuery("findByName");
+
+		query.setParameter("name", officerName);
+
+		List<IntelligenceBureauEntity> ent = query.getResultList();
+		System.out.println("findByName in Repository" + ent);
+		return ent;
+	}
+
+	@Override
+	public List<IntelligenceBureauEntity> findByEmail(String email) {
+		EntityManager manager = factory.createEntityManager();
+
+		Query query = manager.createNamedQuery("findByEmail");
+
+		query.setParameter("email", email);
+
+		List<IntelligenceBureauEntity> entity = query.getResultList();
+
+		System.out.println("findByEmail in Repository "+entity);
+		
+		return entity;
+	}
 }
