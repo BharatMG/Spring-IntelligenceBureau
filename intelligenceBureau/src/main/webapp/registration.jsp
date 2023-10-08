@@ -44,6 +44,9 @@
 					</select>
 				</div>
 
+                   <div class="mb-3" style="border-color: blue">
+					<label>Joining Date:</label><input type="date" name="joiningDate" placeholder="enter date" required="required">
+				</div>
 
 				<div class="mb-3" style="border-color: blue">
 					<label></label><br> <input type="email" name="email" placeholder="enter email" required="required">
@@ -52,16 +55,12 @@
 					<label></label><br> <input type="tel" name="mobileNumber" maxlength="10" placeholder="enter mobileNumber" required="required">
 				</div>
 				<div class="mb-3">
-					<%-- 			<% boolean isMarried = true; %> --%>
-					<%-- 			<%if(isMarried==true){ %> --%>
-					<input type="radio" name="isMarried" value="true">married
-					<%-- 				<%}else{ %> --%>
-					<input type="radio" name="isMarried" value="false">single
-					<%-- 			<%} %> --%>
+					<input type="radio" name="isMarried" value="true">married					
+					<input type="radio" name="isMarried" value="false">single					
 				</div>
 
 				<div class="mb-3">
-					<label></label><br> <input type="text" name="permanentrAddress" placeholder="enter permanentrAddress" required="required">
+					<label></label><br> <input type="text" name="permanentAddress" placeholder="enter permanentrAddress" required="required">
 				</div>
 				<div class="mb-3">
 					<label></label><br> <input type="text" name="workingAddress" placeholder="enter workingAddress" required="required">
@@ -76,7 +75,6 @@
 			</form>
 		</div>
 	</div>
-	<!-- <div style="text-align: center"> -->
 	<div>
 		<%@include file="footer.jsp"%>
 	</div>

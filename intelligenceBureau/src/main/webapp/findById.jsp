@@ -27,24 +27,29 @@
 					<th>officerName</th>
 					<th>designation</th>
 					<th>gender</th>
+					<th>joiningDate</th>
 					<th>email</th>
 					<th>mobileNumber</th>
 					<th>isMarried</th>
 					<th>permanentAddress</th>
 					<th>workingAddress</th>
 					<th>basicPayScale</th>
+					<th>Action</th>
 				</tr>
 				<tr>
 				<td>${dto.id}</td>
 					<td>${dto.officerName}</td>
 					<td>${dto.designation}</td>
 					<td>${dto.gender}</td>
+					<td>${dto.joiningDate}</td>
 					<td>${dto.email}</td>
 					<td>${dto.mobileNumber}</td>
 					<td>${dto.isMarried}</td>
 					<td>${dto.permanentAddress}</td>
 					<td>${dto.workingAddress}</td>
 					<td>${dto.basicPayScale}</td>
+				<td><a href="registration.jsp" class="btn btn-sm btn-primary">update</a> <a href="delete?id=${dto.id}" class="btn btn-sm btn-danger">delete</a></td>
+					
 				</tr>
 			</tbody>
 		</table>

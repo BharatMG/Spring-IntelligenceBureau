@@ -11,16 +11,20 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
 @Data
 @Table(name = "intelligenceBureau_info")
-@NamedQueries({
-	@NamedQuery(name="readAll", query="select e from IntelligenceBureauEntity e") ,
-	@NamedQuery(name ="findByName", query = "select e from IntelligenceBureauEntity e where e.officerName=:name"),
-	@NamedQuery(name ="findByEmail", query = "select e from IntelligenceBureauEntity e where e.email=:email")
-})
+@NamedQueries({ @NamedQuery(name = "readAll", query = "select e from IntelligenceBureauEntity e"),
+		@NamedQuery(name = "findByName", query = "select e from IntelligenceBureauEntity e where e.officerName=:name"),
+		@NamedQuery(name = "findByEmail", query = "select e from IntelligenceBureauEntity e where e.email=:email"),
+		@NamedQuery(name = "findByMobileNumber", query = "select e from IntelligenceBureauEntity e where e.mobileNumber=:number"),
+		@NamedQuery(name = "deleteByEmail", query = "delete from IntelligenceBureauEntity en where en.email=:e"),
+		@NamedQuery(name = "deleteByName", query = "delete from IntelligenceBureauEntity en where en.officerName=:n"),
+		@NamedQuery(name = "deleteByMobileNumber", query = "delete from IntelligenceBureauEntity en where en.mobileNumber=:mobile") })
+
 public class IntelligenceBureauEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,12 +32,12 @@ public class IntelligenceBureauEntity {
 	private String officerName;
 	private String designation;
 	private String gender;
+	private String joiningDate;
 	private String email;
-	private long mobileNumber;
+	private Long mobileNumber;
 	private String isMarried;
 	private String permanentAddress;
 	private String workingAddress;
-	private double basicPayScale;
-
+	private Double basicPayScale;
 
 }

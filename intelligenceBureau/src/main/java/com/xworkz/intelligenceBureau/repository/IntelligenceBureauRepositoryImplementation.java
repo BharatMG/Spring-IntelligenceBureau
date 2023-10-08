@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import org.apache.catalina.Manager;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,20 +27,9 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 	@Override
 	public boolean onSave(IntelligenceBureauDTO dto) {
 		System.out.println("repository onsave method invoked");
-		System.out.println(dto);
-
+	//	System.out.println(dto);
 		IntelligenceBureauEntity entity = new IntelligenceBureauEntity();
-		entity.setOfficerName(dto.getOfficerName());
-		entity.setDesignation(dto.getDesignation());
-		entity.setGender(dto.getGender());
-		entity.setEmail(dto.getEmail());
-		entity.setMobileNumber(dto.getMobileNumber());
-//		entity.setMarried(Boolean.parseBoolean(dto.isMarried()));
-		entity.setIsMarried(dto.getIsMarried());
-		entity.setPermanentAddress(dto.getPermanentAddress());
-		entity.setWorkingAddress(dto.getWorkingAddress());
-		entity.setBasicPayScale(dto.getBasicPayScale());
-
+		BeanUtils.copyProperties(dto, entity);
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
@@ -49,6 +40,21 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 
 		return true;
 	}
+
+	
+	
+	
+	/*
+	 * entity.setOfficerName(dto.getOfficerName());
+	 * entity.setDesignation(dto.getDesignation());
+	 * entity.setGender(dto.getGender()); entity.setEmail(dto.getEmail());
+	 * entity.setMobileNumber(dto.getMobileNumber());
+	 * entity.setIsMarried(dto.getIsMarried());
+	 * entity.setPermanentAddress(dto.getPermanentAddress());
+	 * entity.setWorkingAddress(dto.getWorkingAddress());
+	 * entity.setBasicPayScale(dto.getBasicPayScale());
+	 */
+
 
 	@Override
 	public List<IntelligenceBureauEntity> readAll() {
@@ -86,13 +92,81 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 		EntityManager manager = factory.createEntityManager();
 
 		Query query = manager.createNamedQuery("findByEmail");
-
 		query.setParameter("email", email);
-
 		List<IntelligenceBureauEntity> entity = query.getResultList();
-
-		System.out.println("findByEmail in Repository "+entity);
-		
+		System.out.println("findByEmail in Repository " + entity);
 		return entity;
+	}
+
+	@Override
+	public List<IntelligenceBureauEntity> findByMobileNumber(Long mobileNumber) {
+		EntityManager manager = factory.createEntityManager();
+		Query query = manager.createNamedQuery("findByMobileNumber");
+		query.setParameter("number", mobileNumber);
+		List<IntelligenceBureauEntity> entity = query.getResultList();
+		System.out.println("findByMobileNumber in repository" + entity);
+		return entity;
+	}
+
+	@Override
+	public boolean deleteById(int id) {
+		EntityManager manager = factory.createEntityManager();
+		IntelligenceBureauEntity entity = manager.find(IntelligenceBureauEntity.class, id);
+		if (entity != null) {
+			System.out.println(entity);
+			manager.getTransaction().begin();
+
+			manager.remove(entity);
+			manager.getTransaction().commit();
+			manager.close();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteByEmail(String email) {
+		System.out.println("deleteByEmail repository method");
+		EntityManager manager = factory.createEntityManager();
+		manager.getTransaction().begin();
+		Query q = manager.createNamedQuery("deleteByEmail");
+		q.setParameter("e", email);
+		int row = q.executeUpdate();
+		manager.getTransaction().commit();
+		manager.close();
+		return row > 0;
+
+	}
+
+	@Override
+	public boolean deleteByName(String officerName) {
+		EntityManager manager = factory.createEntityManager();
+		System.out.println("deleteByName repository method started");
+		manager.getTransaction().begin();
+		Query query2 = manager.createNamedQuery("deleteByName");
+		query2.setParameter("n", officerName);
+		int row = query2.executeUpdate();
+		manager.getTransaction().commit();
+		manager.close();
+		return row > 0;
+	}
+
+	@Override
+	public boolean deleteByMobileNumber(Long mobileNumber) {
+		EntityManager manager = factory.createEntityManager();
+		System.out.println("deleteByMobileNumber repository method");
+		manager.getTransaction().begin();
+		Query query = manager.createNamedQuery("deleteByMobileNumber");
+		query.setParameter("mobile", mobileNumber);
+		int row = query.executeUpdate();
+		manager.getTransaction().commit();
+		manager.close();
+		if (row>0) {
+			return true;
+		}else {
+			System.out.println("no such data present");
+			return false;
+		}
 	}
 }

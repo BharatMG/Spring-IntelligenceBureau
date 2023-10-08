@@ -15,6 +15,15 @@ public interface IntelligenceBureauService {
 	public List<IntelligenceBureauDTO> findByName(String officerName);
 
 	public List<IntelligenceBureauDTO> findByEmail(String email);
+
+	public List<IntelligenceBureauDTO> findByMobileNumber(Long mobileNumber);
+
+	public abstract boolean deleteById(int id);
+
+	public boolean deleteByEmail(String email);
+
+	public boolean deleteByName(String officerName);
 	
+	public boolean deleteByMobileNumber(Long mobileNumber);
 
 }

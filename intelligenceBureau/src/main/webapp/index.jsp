@@ -25,11 +25,14 @@
 	<marquee>
 		<h1>Intelligence Bureau</h1>
 	</marquee>
-	<h1 class="text-center" , class="position:relative">Welcome to IB</h1>
+	<div class="position:absolute">
+	<h1  class="text-center" >Welcome to IB</h1>
+	<div class="d-flex justify-content-center">
+	
 	<img
 		src="https://w7.pngwing.com/pngs/596/349/png-transparent-india-independence-day-indian-flag.png"
 		width="100%" height="100%" margin="0"
-		style="float:center;">
+		style="float:center;"></div></div>
 		<br>
 				
  <%@include file="footer.jsp"%>

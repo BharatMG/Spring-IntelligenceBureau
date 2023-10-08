@@ -18,6 +18,7 @@ table, th, td {
 </style>
 </head>
 <body style="text-align: center;">
+<%@include file="nav.jsp"%>
 	<div style="text-align: center;">
 		<h1 class="text-center">Registration form</h1>
 		<table class="table table-bordered">
@@ -26,6 +27,7 @@ table, th, td {
 					<th>officerName</th>
 					<th>designation</th>
 					<th>gender</th>
+					<th>joiningDate</th>
 					<th>email</th>
 					<th>mobileNumber</th>
 					<th>isMarried</th>
@@ -37,6 +39,7 @@ table, th, td {
 					<td>${dto.officerName}</td>
 					<td>${dto.designation}</td>
 					<td>${dto.gender}</td>
+					<td>${dto.joiningDate}</td>
 					<td>${dto.email}</td>
 					<td>${dto.mobileNumber}</td>
 					<td>${dto.isMarried}</td>
@@ -48,5 +51,6 @@ table, th, td {
 		</table>
 	</div>
 	<hr>
+	<%@include file="footer.jsp"%>
 </body>
 </html>

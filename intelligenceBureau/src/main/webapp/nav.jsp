@@ -16,7 +16,7 @@
 
 	<nav class="navbar navbar-expand-lg bg-warning">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">IntelligenceBureau</a>
+			<a class="navbar-brand" href="#"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -36,16 +36,20 @@
 
 								<li class="nav-item"><a class="nav-link" href="Findall.jsp">ReadAll</a></li>
 
-								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="findById.jsp">findById</a></li>
-										<li><a class="dropdown-item" href="findByName.jsp">findByName</a></li>
-										<li><a class="dropdown-item" href="findByEmail.jsp">findByEmail</a></li>
-										<li><hr class="dropdown-divider"></li>
-										<li><a class="dropdown-item" href="index.jsp">Something else here</a></li>
-									</ul></li>
-							</ul>
+
+
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SearchBy </a>
+					<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="findById.jsp">findById</a></li>
+				<li><a class="dropdown-item" href="findByName.jsp">findByName</a></li>
+				<li><a class="dropdown-item" href="findByEmail.jsp">findByEmail</a></li>
+				<li><a class="dropdown-item" href="findByMobileNumber.jsp">findByMobileNumber</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="index.jsp">Something else here</a></li>
+				</ul></li>
 				</ul>
+				</ul>
+				
 				<form class="d-flex" role="search">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 

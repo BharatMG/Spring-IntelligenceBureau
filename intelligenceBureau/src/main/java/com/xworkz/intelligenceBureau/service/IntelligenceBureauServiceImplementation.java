@@ -92,7 +92,7 @@ public class IntelligenceBureauServiceImplementation implements IntelligenceBure
 
 		List<IntelligenceBureauEntity> entity = repository.findByEmail(email);
 		List<IntelligenceBureauDTO> dtos = new ArrayList<IntelligenceBureauDTO>();
-		
+
 		for (IntelligenceBureauEntity intelligenceBureauEntity : entity) {
 			System.out.println(intelligenceBureauEntity);
 			IntelligenceBureauDTO dto = new IntelligenceBureauDTO();
@@ -101,5 +101,57 @@ public class IntelligenceBureauServiceImplementation implements IntelligenceBure
 		}
 		System.out.println("entity is null");
 		return dtos;
+	}
+
+	@Override
+	public List<IntelligenceBureauDTO> findByMobileNumber(Long mobileNumber) {
+		System.out.println("findByMobileNumber in service method" + mobileNumber);
+		List<IntelligenceBureauEntity> entity = repository.findByMobileNumber(mobileNumber);
+		List<IntelligenceBureauDTO> dtos = new ArrayList<IntelligenceBureauDTO>();
+
+		for (IntelligenceBureauEntity intelligenceBureauEntity : entity) {
+			System.out.println(intelligenceBureauEntity);
+			IntelligenceBureauDTO dto = new IntelligenceBureauDTO();
+			BeanUtils.copyProperties(intelligenceBureauEntity, dto);
+			dtos.add(dto);
+		}
+		System.out.println("entity is null");
+		return dtos;
+	}
+
+	@Override
+	public boolean deleteById(int id) {
+		boolean delete = false;
+		if (id != 0) {
+			delete = repository.deleteById(id);
+		}
+		if (delete != true) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@Override
+	public boolean deleteByEmail(String email) {
+
+		System.out.println("deleteByEmail service method");
+		boolean entities = repository.deleteByEmail(email);
+		return entities;
+
+	}
+
+	@Override
+	public boolean deleteByName(String officerName) {
+		System.out.println("deleteByName service method");
+		boolean entities = repository.deleteByName(officerName);
+		return entities;
+	}
+
+	@Override
+	public boolean deleteByMobileNumber(Long mobileNumber) {
+		System.out.println("deleteByMobileNumber service method");
+		boolean delete = repository.deleteByMobileNumber(mobileNumber);
+		return delete;
 	}
 }

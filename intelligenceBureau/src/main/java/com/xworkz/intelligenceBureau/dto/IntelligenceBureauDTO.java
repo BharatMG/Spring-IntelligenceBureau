@@ -17,13 +17,11 @@ public class IntelligenceBureauDTO {
 	private String officerName;
 	private String designation;
 	private String gender;
+	private String joiningDate;
 	private String email;
-	private long mobileNumber;
+	private Long mobileNumber;
 	private String isMarried;
 	private String permanentAddress;
 	private String workingAddress;
-	private double basicPayScale;
-	
-	
-
+	private Double basicPayScale;	
 }
