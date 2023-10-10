@@ -26,5 +26,7 @@ public interface IntelligenceBureauRepository {
 	public boolean deleteByName(String officerName);
 	
 	public abstract boolean deleteByMobileNumber(Long mobileNumber);
+	
+	public boolean updateById(IntelligenceBureauDTO dto);
 
 }

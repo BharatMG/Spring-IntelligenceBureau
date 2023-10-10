@@ -26,4 +26,5 @@ public interface IntelligenceBureauService {
 	
 	public boolean deleteByMobileNumber(Long mobileNumber);
 
+	public boolean updateById(IntelligenceBureauDTO dto);
 }

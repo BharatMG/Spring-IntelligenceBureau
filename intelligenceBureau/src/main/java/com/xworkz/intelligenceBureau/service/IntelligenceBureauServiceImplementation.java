@@ -154,4 +154,12 @@ public class IntelligenceBureauServiceImplementation implements IntelligenceBure
 		boolean delete = repository.deleteByMobileNumber(mobileNumber);
 		return delete;
 	}
+
+	@Override
+	public boolean updateById(IntelligenceBureauDTO dto) {
+		System.out.println("updateById in service method");
+		boolean update = repository.updateById(dto);
+
+		return update;
+	}
 }

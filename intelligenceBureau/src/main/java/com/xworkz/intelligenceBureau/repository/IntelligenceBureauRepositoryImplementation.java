@@ -27,7 +27,7 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 	@Override
 	public boolean onSave(IntelligenceBureauDTO dto) {
 		System.out.println("repository onsave method invoked");
-	//	System.out.println(dto);
+		// System.out.println(dto);
 		IntelligenceBureauEntity entity = new IntelligenceBureauEntity();
 		BeanUtils.copyProperties(dto, entity);
 		EntityManager manager = factory.createEntityManager();
@@ -41,9 +41,6 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 		return true;
 	}
 
-	
-	
-	
 	/*
 	 * entity.setOfficerName(dto.getOfficerName());
 	 * entity.setDesignation(dto.getDesignation());
@@ -54,7 +51,6 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 	 * entity.setWorkingAddress(dto.getWorkingAddress());
 	 * entity.setBasicPayScale(dto.getBasicPayScale());
 	 */
-
 
 	@Override
 	public List<IntelligenceBureauEntity> readAll() {
@@ -162,11 +158,23 @@ public class IntelligenceBureauRepositoryImplementation implements IntelligenceB
 		int row = query.executeUpdate();
 		manager.getTransaction().commit();
 		manager.close();
-		if (row>0) {
+		if (row > 0) {
 			return true;
-		}else {
+		} else {
 			System.out.println("no such data present");
 			return false;
 		}
+	}
+
+	@Override
+	public boolean updateById(IntelligenceBureauDTO dto) {
+		EntityManager manager = factory.createEntityManager();
+		IntelligenceBureauEntity entity=new IntelligenceBureauEntity();
+		manager.getTransaction().begin();
+		BeanUtils.copyProperties(dto, entity);
+		manager.merge(entity);
+		manager.getTransaction().commit();
+		manager.close();
+		return true;
 	}
 }

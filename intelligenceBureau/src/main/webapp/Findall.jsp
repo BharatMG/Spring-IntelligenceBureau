@@ -20,6 +20,7 @@
 			<table class="table table-bordered">
 				<tbody>
 					<tr>
+						<th>Id</th>
 						<th>officerName</th>
 						<th>designation</th>
 						<th>gender</th>
@@ -34,6 +35,7 @@
 					</tr>
 					<c:forEach items="${dtos}" var="dto">
 						<tr>
+							<td>${dto.id}</td>
 							<td>${dto.officerName}</td>
 							<td>${dto.designation}</td>
 							<td>${dto.gender}</td>
@@ -44,7 +46,7 @@
 							<td>${dto.permanentAddress}</td>
 							<td>${dto.workingAddress}</td>
 							<td>${dto.basicPayScale}</td>
-				<td><a href="registration.jsp" class="btn btn-sm btn-primary">update</a> <a href="delete/${dto.id}" class="btn btn-sm btn-danger">delete</a></td>
+							<td><a href="update?id=${dto.id}" class="btn btn-sm btn-primary">update</a> <a href="delete/${dto.id}" class="btn btn-sm btn-danger">delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
