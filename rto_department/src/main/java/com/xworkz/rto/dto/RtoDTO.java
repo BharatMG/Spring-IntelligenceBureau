@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class RtoDTO {
+	private int id;
 	@NotBlank
 	@NotNull
 	@Size(min = 3, max = 30, message = "check the name length,min=3 and max=30")
@@ -37,4 +38,5 @@ public class RtoDTO {
 	private String password;
 	private String confirmPassword;
 	private LocalDateTime registereDateTime;
+	private String rtoOtp;
 }

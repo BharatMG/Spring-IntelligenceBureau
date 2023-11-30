@@ -66,7 +66,10 @@ public class RtoServiceImplementation implements RtoService {
 		List<RtoDTO> dtos = new ArrayList<RtoDTO>();
 		for (RtoEntity rtoEntity : entities) {
 			RtoDTO dto = new RtoDTO();
+			// System.err.println("Before RtoEntity " + rtoEntity);
+
 			BeanUtils.copyProperties(rtoEntity, dto);
+			// System.out.println("After RtoDto " + dto);
 			dtos.add(dto);
 		}
 		return dtos;
@@ -86,12 +89,13 @@ public class RtoServiceImplementation implements RtoService {
 	}
 
 	@Override
-	public RtoDTO adminLogin(String emailId, String password) {
-		RtoEntity entity1 = repository.adminLogin(emailId, password);
-		RtoDTO dto = new RtoDTO();
+	public RtoDTO adminLogin(String emailId, String rtoOtp) {
+
+		RtoEntity entity1 = repository.adminLogin(emailId, rtoOtp);
 		if (entity1 != null) {
+			RtoDTO dto = new RtoDTO();
 			BeanUtils.copyProperties(entity1, dto);
-			if (dto.getEmailId().equalsIgnoreCase(emailId) && dto.getPassword().equalsIgnoreCase(password)) {
+			if (dto.getEmailId().equalsIgnoreCase(emailId) && dto.getRtoOtp().equalsIgnoreCase(rtoOtp)) {
 				return dto;
 			} else {
 				System.out.println("Invalid email or password");
@@ -119,8 +123,29 @@ public class RtoServiceImplementation implements RtoService {
 
 	@Override
 	public boolean checkSave(UserDTO userDTO) {
-		boolean check = userrepo.userSave(userDTO);
-		return true;
+
+		if (userDTO != null) {
+			int randomNumber = (int) ((Math.random() * 900) + 100);
+			String otp = String.valueOf(randomNumber);
+			String code = null;
+			if (userDTO.getState().equals("Karnataka")) {
+				code = "KA2023LLR" + otp;
+			}
+			if (userDTO.getState().equals("Kerala")) {
+				code = "KL2023LLR" + otp;
+			}
+			if (userDTO.getState().equals("Maharashtra")) {
+				code = "MH2023LLR" + otp;
+			}
+			if (userDTO.getState().equals("Odisha")) {
+				code = "MH2023LLR" + otp;
+			}
+			userDTO.setApplicationNumber(code);
+			boolean check = userrepo.userSave(userDTO);
+			return true;
+		}
+		System.out.println("user data is null");
+		return false;
 	}
 
 	@Override
@@ -138,12 +163,50 @@ public class RtoServiceImplementation implements RtoService {
 	@Override
 	public List<UserDTO> searchByUserState(String state) {
 		List<UserEntity> entities = userrepo.searchByUserState(state);
-		List<UserDTO> userDTOs=new ArrayList<UserDTO>();
+		List<UserDTO> userDTOs = new ArrayList<UserDTO>();
 		for (UserEntity userEntity : entities) {
-			UserDTO userDTO=new UserDTO();
+			UserDTO userDTO = new UserDTO();
 			BeanUtils.copyProperties(userEntity, userDTO);
 			userDTOs.add(userDTO);
 		}
 		return userDTOs;
+	}
+
+	@Override
+	public UserDTO userLogin(String apporcontact, String dob) {
+		UserEntity userEntity = userrepo.userLogin(apporcontact, dob);
+		if (userEntity != null) {
+			UserDTO userDTO = new UserDTO();
+			BeanUtils.copyProperties(userEntity, userDTO);
+			return userDTO;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public boolean updateStatus(String applicationNumber) {
+		userrepo.updateStatus(applicationNumber);
+		return true;
+	}
+
+	@Override
+	public boolean updateId(int id) {
+		boolean update = userrepo.updateById(id);
+		return update;
+	}
+
+	@Override
+	public void updateOTPbyId(RtoDTO rtoDTO, String otp) {
+		rtoDTO.setRtoOtp(otp);
+		repository.updateOTPbyId(rtoDTO);
+	}
+
+	@Override
+	public void updatePassword(RtoDTO rtoDTO, String password, String confirmPassword) {
+		rtoDTO.setPassword(password);
+		rtoDTO.setConfirmPassword(confirmPassword);
+		repository.updatePassword(rtoDTO);
+
 	}
 }

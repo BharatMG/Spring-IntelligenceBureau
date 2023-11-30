@@ -139,7 +139,6 @@
 		<form action="save" method="post">
 
 			<div class="row">
-
 				<div class="col">
 
 					<span style="color: green" id="error"></span>
@@ -178,7 +177,7 @@
 				<div class="col">
 					<span id="error1"></span>
 					<div class="form-floating mb-3">
-						<input type="text" onblur="validate1()" required="required " id="lname" class="form-control" name="lastName" id="floatingInput" placeholder="enter lastName"> <label for="floatingInput">last
+						<input type="text" onblur="validate1()" required="required" id="lname" class="form-control" name="lastName" id="floatingInput" placeholder="enter lastName"> <label for="floatingInput">last
 							Name</label>
 					</div>
 

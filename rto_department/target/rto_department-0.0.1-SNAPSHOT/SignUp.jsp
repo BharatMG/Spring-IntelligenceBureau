@@ -139,7 +139,6 @@
 		<form action="save" method="post">
 
 			<div class="row">
-
 				<div class="col">
 
 					<span style="color: green" id="error"></span>

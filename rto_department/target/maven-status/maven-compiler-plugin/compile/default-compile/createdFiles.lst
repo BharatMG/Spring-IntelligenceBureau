@@ -5,9 +5,14 @@ com\xworkz\rto\configuration\RtoWebInit.class
 com\xworkz\rto\service\RtoService.class
 com\xworkz\rto\service\RtoServiceImplementation.class
 com\xworkz\rto\entity\RtoEntity.class
+com\xworkz\rto\repository\RtoUserRepositoryImplementation.class
 com\xworkz\rto\entity\UserEntity.class
 com\xworkz\rto\controller\RtoLoginController.class
 com\xworkz\rto\controller\RtoController.class
+com\xworkz\rto\mail\MailServiceImpl.class
+com\xworkz\rto\configuration\MailConfig.class
+com\xworkz\rto\mail\MailService.class
 com\xworkz\rto\configuration\RtoConfiguration.class
+com\xworkz\rto\repository\RtoUserRepository.class
 com\xworkz\rto\controller\UserController.class
 com\xworkz\rto\dto\UserDTO.class

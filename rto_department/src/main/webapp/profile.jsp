@@ -19,18 +19,16 @@
 				</button>
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item" style="list-style-type: none;"><a class="nav-link active" aria-current="page" href="index.jsp">Home</a></li>
-				</ul>
-				
+				</ul>				
 			</div>
-
 			<div class="d-flex">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link" role="button" name="firstName" href=""><b>Hi,${dd}</b></a></li>
 					</ul>
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<!-- 	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link" role="button" href="SignUp.jsp"><b>Sign Up</b></a></li>
-					</ul>
+					</ul> -->
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link" role="button" href="index.jsp"><b>Logout</b></a></li>
 					</ul>
@@ -52,8 +50,8 @@
 					<th>mobileNumber</th>
 					<th>State</th>
 					<th>Place</th>
-					<th>password</th>
-					<th>confirmPassword</th>
+					<!-- <th>password</th>
+					<th>confirmPassword</th> -->
 					<th>registereDateTime</th>
 				</tr>
 				<tr>
@@ -64,8 +62,8 @@
 					<td>${dto.mobileNumber}</td>
 					<td>${dto.state}</td>
 					<td>${dto.place}</td>
-					<td>${dto.password}</td>
-					<td>${dto.confirmPassword}</td>
+					<%-- <td>${dto.password}</td>
+					<td>${dto.confirmPassword}</td> --%>
 					<td>${dto.registereDateTime}</td>
 				</tr>
 			</tbody>
@@ -79,25 +77,38 @@
 <div>
 				<br> <input type="search" name="state" placeholder="search"> <input type="submit">
 			</div> -->
-
+<h1>${updateMessage}</h1>
+<%-- <h1>${u.firstName}</h1>
+<h1>${u.email}</h1>
+<h1>${u.state}</h1> --%>
 		<h1 class="text-center">LLR detail</h1>
 		<table class="table table-bordered pd-5">
 			<tbody>
 				<tr>
 				
 					<th>FirstName</th>					
-					<th>emailId</th>	
+					<th>emailId</th>
+					<th>applicationNumber</th>	
 					<th>State</th>
 					<th>UserRegistereDateTime</th>
+					<th>status</th>
+					<th>button</th>
 				</tr>
 				<c:forEach items="${state}" var="state">
 				 <tr>
 				<%-- <td>${state.id}</td> --%>
 					 <td>${state.firstName}</td>
 					<td>${state.email}</td>
+					<td>${state.applicationNumber}</td>
 					<td>${state.state}</td>
 					<td>${state.userRegistereDateTime}</td>
-					<%-- <td>${state.UserRegistereDateTime}</td> --%>
+					<td><font color="red">${state.status}</font></td>
+					<td><button><a href=updateUserStatus?id=${state.id}>Approve</a></button></td>
+					
+					<!-- <td><a href=updateUserStatus?applicationNumber=${state.applicationNumber}>Approve</a></td> -->				
+					<%-- <td><button><font color="green"><input type="submit" value="updateStatus"></font></button></td>
+					 <td><a href="updateStatus?id=${dto.applicationNumber}" class="btn btn-sm btn-primary">Approved</a></td>
+					 <td>${state.UserRegistereDateTime}</td> --%>
 				</tr>
 				<%-- <h1>${state}</h1> --%>
 				</c:forEach>

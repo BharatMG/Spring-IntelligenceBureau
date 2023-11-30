@@ -53,18 +53,22 @@ public class RtoRepositoryImplementation implements RtoRepository {
 		System.out.println("readAll method in repository");
 		EntityManager manager = factory.createEntityManager();
 		Query query = manager.createNamedQuery("readAll");
+//		System.err.println((List<RtoEntity>) query.getResultList());
 		return (List<RtoEntity>) query.getResultList();
 	}
 
 	@Override
-	public RtoEntity adminLogin(String emailId, String password) {
+	public RtoEntity adminLogin(String emailId, String rtoOtp) {
 		EntityManager manager = factory.createEntityManager();
-		Query query = manager.createNamedQuery("login");
+		RtoEntity entity = new RtoEntity();
+		Query query = manager.createNamedQuery("OTPlogin");
 		query.setParameter("email", emailId);
-		query.setParameter("password", password);
+		query.setParameter("rtoOtp", rtoOtp);
+		System.out.println("correct+\u001B[31m");
 		try {
 			return (RtoEntity) query.getSingleResult();
 		} catch (Exception e) {
+			System.out.println("admin repository failed to login+\\u001B[31m");
 			return null;
 		}
 	}
@@ -78,5 +82,26 @@ public class RtoRepositoryImplementation implements RtoRepository {
 		return entities;
 	}
 
-	
+	@Override
+	public void updateOTPbyId(RtoDTO rtoDTO) {
+		EntityManager manager = factory.createEntityManager();
+		RtoEntity entity = new RtoEntity();
+		BeanUtils.copyProperties(rtoDTO, entity);
+		manager.getTransaction().begin();
+		manager.merge(entity);
+		manager.getTransaction().commit();
+		manager.close();
+	}
+
+	@Override
+	public void updatePassword(RtoDTO rtoDTO) {
+		EntityManager manager = factory.createEntityManager();
+		RtoEntity entity = new RtoEntity();
+		BeanUtils.copyProperties(rtoDTO, entity);
+		manager.getTransaction().begin();
+		manager.merge(entity);
+		manager.getTransaction().commit();
+		manager.close();
+
+	}
 }

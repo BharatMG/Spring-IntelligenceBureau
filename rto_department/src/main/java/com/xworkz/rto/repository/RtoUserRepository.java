@@ -12,5 +12,15 @@ public interface RtoUserRepository {
 	public abstract List<UserEntity> readAll();
 	
 	public abstract List<UserEntity> searchByUserState(String state);
+	
+	public abstract UserEntity userLogin(String apporcontact,String dob);
+	
+	public abstract boolean updateStatus(String applicationNumber);
+	
+	public abstract boolean updateById(int id);
+	
+	
+	
+	
 
 }

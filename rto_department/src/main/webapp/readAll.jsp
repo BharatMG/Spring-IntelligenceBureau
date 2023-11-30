@@ -26,8 +26,8 @@
 				<th>dateOfBirth</th>
 				<th>emailId</th>
 				<th>mobileNumber</th>
-				<th>password</th>
-				<th>confirmPassword</th>
+				<!-- <th>password</th>
+				<th>confirmPassword</th> -->
 				<th>registereDateTime</th>
 			</tr>
 			<c:forEach items="${dto}" var="dto">
@@ -37,8 +37,8 @@
 				<td>${dto.dateOfBirth}</td>
 				<td>${dto.emailId}</td>
 				<td>${dto.mobileNumber}</td>
-				<td>${dto.password}</td>
-				<td>${dto.confirmPassword}</td>
+				<%-- <td>${dto.password}</td>
+				<td>${dto.confirmPassword}</td> --%>
 				<td>${dto.registereDateTime}</td>
 			</tr>
 			</c:forEach>

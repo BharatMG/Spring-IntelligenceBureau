@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,11 @@
 			<div class="d-flex">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" role="button" name="firstName" href=""><b>Hi,${d}</b></a></li>
+						<li class="nav-item"><a class="nav-link" role="button" name="firstName"><b>Hi,${d}</b></a></li>
+					</ul>
+
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link" role="button" href="SignUp.jsp"><b>Sign Up</b></a></li>
 					</ul>
 
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -42,36 +47,54 @@
 	</nav>
 
 	<div>
-		<h1 class="text-center">RTO detail</h1>
-		<table class="table table-bordered pd-5">
-			<tbody>
-				<tr>
-					<th>FirstName</th>
-					<th>LastName</th>
-					<th>dateOfBirth</th>
-					<th>emailId</th>
-					<th>mobileNumber</th>
-					<th>State</th>
-					<th>Place</th>
-					<th>password</th>
-					<th>confirmPassword</th>
-					<th>registereDateTime</th>
-				</tr>
-				<tr>
-					<td>${dto.firstName}</td>
-					<td>${dto.lastName}</td>
-					<td>${dto.dateOfBirth}</td>
-					<td>${dto.emailId}</td>
-					<td>${dto.mobileNumber}</td>
-					<td>${dto.state}</td>
-					<td>${dto.place}</td>
-					<td>${dto.password}</td>
-					<td>${dto.confirmPassword}</td>
-					<td>${dto.registereDateTime}</td>
-				</tr>
-			</tbody>
-		</table>
+		<form action="searchByState" method="get">
+			<div>
+				<br> <input type="search" name="state" placeholder="search"> <input type="submit">
+			</div>
+			<br>
+			<div>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<button type="submit">
+						<li class="nav-item" style="list-style-type: none;"><a class="nav-link active" aria-current="page" href="readAll">ReadAll</a></li>
+					</button>
+				</ul>
+			</div>
+			<div>
+				<h1 class="text-center">RTO detail</h1>
+				<table class="table table-bordered pd-5">
+					<tbody>
+						<tr>
+							<th>FirstName</th>
+							<th>LastName</th>
+							<th>dateOfBirth</th>
+							<th>emailId</th>
+							<th>mobileNumber</th>
+							<th>State</th>
+							<th>Place</th>
+							<th>password</th>
+							<th>confirmPassword</th>
+							<th>registereDateTime</th>
+						</tr>
+						<c:forEach items="${dto}" var="dto">
+							<tr>
+								<td>${dto.firstName}</td>
+								<td>${dto.lastName}</td>
+								<td>${dto.dateOfBirth}</td>
+								<td>${dto.emailId}</td>
+								<td>${dto.mobileNumber}</td>
+								<td>${dto.state}</td>
+								<td>${dto.place}</td>
+								<td>${dto.password}</td>
+								<td>${dto.confirmPassword}</td>
+								<td>${dto.registereDateTime}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</form>
 	</div>
+
 	<%@include file="footer.jsp"%>
 </body>
 </html>

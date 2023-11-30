@@ -15,14 +15,19 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item" style="list-style-type: none;"><a class="nav-link active" aria-current="page" href="index.jsp">Home</a></li>
 				</ul>
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><input class="nav-link" type="submit" name="admin" value="LLR-Registeration"></a></li>
-				</ul>
+				</ul> -->
 				
 			</div>
 
 			<div class="d-flex">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<button>	<input class="nav-link active" type="submit" name="admin" value="LLR-Application Status">
+				</button></ul>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<input class="nav-link active"  type="submit"  name="admin" value="Rtologin"/></ul>
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<input class="nav-link active"  type="submit"  name="admin" value="Admin"/></ul>
 						<%-- <li class="nav-item"><a class="nav-link" role="button" name="firstName" href=""><b>Hi,${dd}</b></a></li>

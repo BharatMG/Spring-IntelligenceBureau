@@ -25,17 +25,28 @@ public class UserController {
 
 	@PostMapping("user")
 	public String userSave(Model model, @ModelAttribute UserDTO userDTO) {
-		boolean save = service.checkSave(userDTO);
+		List<UserDTO> dtos = service.readUser();
+		System.out.println("usersave controller method");
+		for (UserDTO userDTO2 : dtos) {
+			if (userDTO2.getEmail().equalsIgnoreCase(userDTO.getEmail())) {
+				model.addAttribute("error", "* email already exist");
+				if (userDTO2.getContactNumber() == userDTO.getContactNumber()) {
+					model.addAttribute("error1", "* number is already exists");
+					return "UserRegister";
+				}
+			} else {
+				boolean save = service.checkSave(userDTO);
 
-		String state[] = { "karnataka", "Ap", "thamilNadu", "Goa" };
-		List<String> stateList = new ArrayList<String>(Arrays.asList(state));
-		/*
-		 * stateList.add(null); stateList.add("karnataka"); stateList.add("Ap");
-		 * stateList.add("karnataka"); stateList.add("karnataka");
-		 */
-		System.out.println(stateList);
-		model.addAttribute("dto", userDTO);
-		return "UserProfile";
+				String state[] = { "karnataka", "Ap", "tamilNadu", "Goa" };
+				List<String> stateList = new ArrayList<String>(Arrays.asList(state));
+				System.out.println(stateList);
+				model.addAttribute("dto", userDTO);
+				model.addAttribute("message", "successfully registered");
+				model.addAttribute("applicationNumber", "applicationNumber is " + userDTO.getApplicationNumber());
+				return "UserRegister";
+			}
+		}
+		return "UserRegister";
 	}
 
 	@GetMapping("userState")
@@ -43,6 +54,34 @@ public class UserController {
 		List<UserDTO> userDTOs = service.searchByUserState(state);
 		model.addAttribute("state", userDTOs);
 		return "profile";
+	}
 
+	@GetMapping("appStaus")
+	public String userStatus(@RequestParam String apporcontact, String dob, Model model) {
+		if (dob != null) {
+			UserDTO userDTO = service.userLogin(apporcontact, dob);
+			model.addAttribute("d", userDTO);
+			return "UserProfile";
+		} else {
+			model.addAttribute("msg", "invalid login");
+			return "LLR-status";
+		}
+	}
+	
+	@GetMapping("updateUserStatus")
+	public String updateStatus(@RequestParam int id, /* @RequestParam String state, */ Model model) {
+//	boolean update	=service.updateStatus(applicationNumber);
+	boolean update=service.updateId(id);
+		if (update == true) {
+			model.addAttribute("updateMessage", "updated successfully..........");
+			model.addAttribute("u",update);
+	//	List<UserDTO>	userDTOs=service.searchByUserState(state);
+	//	model.addAttribute("state", userDTOs);)
+			return "profile";
+		} else {
+			model.addAttribute("updateMessage", "...not updated ..........");
+			return "profile";
+		}
+	//	return "UserProfile";
 	}
 }

@@ -32,4 +32,6 @@ public class UserDTO {
 	private int permanentPincode;
 	private boolean organDonation;
 	private LocalDateTime userRegistereDateTime;
+	private String applicationNumber;
+	private String status;
 }

@@ -9,23 +9,23 @@
 </head>
 <body>
 <%@include file="Navbar.jsp"%>
-<!-- <form action="" method="get">
-<input type="submit">
-</form> -->
+
 
 	<div class="container p-4 mt-3 w-50 border border-dark-subtle">
 	<h1>Login-Form</h1>
-		<form action="login" method="get">
+		<form action="login" method="post">
 	<div class="form-floating mb-3">
 				<input type="email" class="form-control" name="emailId" id="floatingInput" placeholder="name@example.com"> <label for="floatingInput">Email address</label>
 			</div>
-			
+			<h6 style='color: red'>${pass}</h6>
 						<div class="form-floating mb-3">
 				<input type="password" class="form-control" name="password" id="floatingInput" placeholder="Enter password"> <label for="floatingInput">Enter password</label>
 			</div>
+			<div><a href="forgetRtoLogin.jsp">Forget Password</a></div>
 			<div>
 				<input type="submit" class="btn btn-success"> <input type="reset" class="btn btn-dark">
 			</div>
+			
 		</form>
 		</div>
 		<%@include file="footer.jsp"%>

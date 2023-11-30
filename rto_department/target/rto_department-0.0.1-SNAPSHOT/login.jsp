@@ -19,7 +19,7 @@
 	<div class="form-floating mb-3">
 				<input type="email" class="form-control" name="emailId" id="floatingInput" placeholder="name@example.com"> <label for="floatingInput">Email address</label>
 			</div>
-			
+			<h6 style='color: red'>${pass}</h6>
 						<div class="form-floating mb-3">
 				<input type="password" class="form-control" name="password" id="floatingInput" placeholder="Enter password"> <label for="floatingInput">Enter password</label>
 			</div>

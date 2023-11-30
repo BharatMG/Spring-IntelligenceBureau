@@ -20,9 +20,18 @@ import lombok.NoArgsConstructor;
 @Table(name = "rto_info")
 @NamedQueries({ @NamedQuery(name = "readAll", query = "select e from RtoEntity e"),
 		@NamedQuery(name = "readByEmail", query = "select e from RtoEntity e where e.emailId=:email"),
-		@NamedQuery(name = "login", query = "select e from RtoEntity e where e.emailId=:email or e.password=:password"),
-		@NamedQuery(name = "findByState", query = "select e from RtoEntity e where e.state=:state")
-})
+		@NamedQuery(name = "OTPlogin", query = "select e from RtoEntity e where e.emailId=:email and e.rtoOtp=:rtoOtp"),
+		@NamedQuery(name = "login", query = "select e from RtoEntity e where e.emailId=:email and e.password=:password"),
+		@NamedQuery(name = "findByState", query = "select e from RtoEntity e where e.state=:state")/*
+																									 * ,
+																									 * 
+																									 * @NamedQuery(name
+																									 * =
+																									 * "updatePassword",
+																									 * query =
+																									 * "update  RtoEntity e set (e.password=:ps and e.confirmPassword=:cpsd) WHERE e.emailId=:mail"
+																									 * )
+																									 */ })
 public class RtoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,4 +57,6 @@ public class RtoEntity {
 	private String confirmPassword;
 	@Column(name = "registereDateTime")
 	private LocalDateTime registereDateTime;
+	@Column(name = "rto_otp")
+	private String rtoOtp;
 }

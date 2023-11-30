@@ -16,7 +16,12 @@ import lombok.Data;
 @Data
 @Table(name = "userrto_info")
 @NamedQueries({ @NamedQuery(name = "readuser", query = "select e from UserEntity e"),
-		@NamedQuery(name = "searchByState", query = "select e from UserEntity e where e.state=:LLRstate") })
+		@NamedQuery(name = "searchByState", query = "select e from UserEntity e where e.state=:LLRstate"),
+		@NamedQuery(name = "userlogin", query = "select e from UserEntity e where (e.applicationNumber=:app or e.contactNumber=:app) and e.dob=:dob"),
+
+  @NamedQuery(name =  "updateStatus", query =
+  "update  UserEntity e set e.status='Approved' WHERE e.applicationNumber=:appNum")
+})
 public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +47,6 @@ public class UserEntity {
 	private int permanentPincode;
 	private boolean organDonation;
 	private LocalDateTime userRegistereDateTime;
-
+	private String applicationNumber;
+	private String status;
 }

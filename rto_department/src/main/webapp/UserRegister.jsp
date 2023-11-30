@@ -6,10 +6,9 @@
 <%@ include file="styles.jsp"%>
 <meta charset="ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <!-- <script type="text/javascript" src="js/index.js"></script> -->
-	<script type="text/javascript">
-	
-	 function validateName() {
+<!-- <script type="text/javascript" src="js/index.js"></script> -->
+<script type="text/javascript">
+	function validateName() {
 		console.log("name function running")
 		const button = document.getElementById('button')
 		const name = document.getElementById("fname").value
@@ -30,7 +29,7 @@
 		const name = document.getElementById("lastname").value
 		console.log(name.length)
 
-		if (name.length > 3 && name.length <= 22) {
+		if (name.length > 1 && name.length <= 22) {
 			document.getElementById("error1").innerHTML = "<span style='color:green'>Name is valid<span>"
 			button.removeAttribute("disabled")
 		} else {
@@ -43,27 +42,31 @@
 		console.log("name function running")
 		const state = document.getElementById("state").value;
 		console.log(state);
-		if(state == 'Karnataka'){
+		if (state == 'Karnataka') {
 			document.getElementById("distKa").style.display = "block";
 			document.getElementById("distOd").style.display = "none";
 			document.getElementById("distMh").style.display = "none";
 			document.getElementById("distKl").style.display = "none";
-		}else if(state == 'Odisha'){
+		} else if (state == 'Odisha') {
 			document.getElementById("distOd").style.display = "block";
 			document.getElementById("distKa").style.display = "none";
 			document.getElementById("distMh").style.display = "none";
 			document.getElementById("distKl").style.display = "none";
-		}else if(state == 'Maharashtra'){
-			document.getElementById("distMh").style.display = "block";	
+		} else if (state == 'Maharashtra') {
+			document.getElementById("distMh").style.display = "block";
 			document.getElementById("distKa").style.display = "none";
 			document.getElementById("distOd").style.display = "none";
 			document.getElementById("distKl").style.display = "none";
-		}else if(state == 'Kerala'){
+		} else if (state == 'Kerala') {
 			document.getElementById("distKl").style.display = "block";
 			document.getElementById("distKa").style.display = "none";
 			document.getElementById("distOd").style.display = "none";
 			document.getElementById("distMh").style.display = "none";
-		}		
+		} else if (state == 'Goa') {
+			document.getElementById("distKl").style.display = "block";
+			document.getElementById("distKa").style.display = "none";
+			document.getElementById("distOd").style.display = "none";
+			document.getElementById("distMh").style.display = "none";
 	}
 	function validateaadhar() {
 		console.log("name function running")
@@ -71,7 +74,7 @@
 		const name = document.getElementById("aadhar").value
 		console.log(name.length)
 
-		if (name.length >=12) {
+		if (name.length >= 12) {
 			document.getElementById("error2").innerHTML = "<span style='color:green'>Name is valid<span>"
 			button.removeAttribute("disabled")
 		} else {
@@ -79,11 +82,16 @@
 			document.getElementById("error2").innerHTML = "<span style='color:red'>Name is Invalid<span>"
 		}
 	}
-	</script>
+</script>
 </head>
 <body>
 	<%@include file="Navbar.jsp"%>
 	<form action="user" method="post">
+	<div class="card">
+				<div class="card-body">
+					<div class="text-center">
+		<h1>${message}</h1>
+		<h1>${applicationNumber}</h1></div></div></div>
 		<div class="container p-4 w-100 border border-dark-subtle shadow-lg my-3 rounded-2">
 			<h3 class="bg-primary-subtle p-3 border-primary border-1 border text-center">Application for Learner's Licence(LL)</h3>
 
@@ -109,31 +117,28 @@
 							<c:forEach items="${karnataka}" var="ka">
 								<option value="${ka}">${ka}</option>
 							</c:forEach>
-						</select> 
-						<select id="distOd" class="form-select" id="floatingInput" name="rtoOffice" size="1" style="display: none">
+						</select> <select id="distOd" class="form-select" id="floatingInput" name="rtoOffice" size="1" style="display: none">
 							<option value="" disabled selected>Choose City</option>
 							<c:forEach items="${odisha}" var="od">
 								<option value="${od}">${od}</option>
 							</c:forEach>
-						</select>
-						<select  id="distMh" class="form-select" id="floatingInput" name="rtoOffice" size="1" style="display: none">
+						</select> <select id="distMh" class="form-select" id="floatingInput" name="rtoOffice" size="1" style="display: none">
 							<option value="" disabled selected>Choose City</option>
 							<c:forEach items="${maharashtra}" var="mh">
 								<option value="${mh}">${mh}</option>
 							</c:forEach>
-						</select>
-						<select id="distKl" class="form-select" id="floatingInput" name="rtoOffice" size="1" style="display: none">
+						</select> <select id="distKl" class="form-select" id="floatingInput" name="rtoOffice" size="1" style="display: none">
 							<option value="" disabled selected>Choose City</option>
 							<c:forEach items="${kerala}" var="kl">
 								<option value="${kl}">${kl}</option>
 							</c:forEach>
-						</select>
-						<label for="floatingInput">RTO Office</label>
+						</select> <label for="floatingInput">RTO Office</label>
 					</div>
 				</div>
 				<div class="col">
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" name="country" id="floatingInput" placeholder="enter country" onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label for="floatingInput">Enter country</label>
+						<input type="text" class="form-control" name="country" id="floatingInput" placeholder="enter country" onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label for="floatingInput">Enter
+							country</label>
 					</div>
 				</div>
 			</div>
@@ -149,40 +154,45 @@
 								<span id="error"></span>
 								<div class="form-floating mb-3">
 
-									<input type="text" onblur="validateName()" id="fname" class="form-control" id="floatingInput" name="firstName" placeholder="First name" aria-label="First name" onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label
-										for="floatingInput">Enter FirstName</label>
+									<input type="text" onblur="validateName()" id="fname" class="form-control" id="floatingInput" name="firstName" placeholder="First name" aria-label="First name"
+										onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label for="floatingInput">Enter FirstName</label>
 								</div>
 							</div>
 							<div class="col">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" name="middleName" placeholder="First name" aria-label="First name" onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label for="floatingInput">Enter middleName</label>
+									<input type="text" class="form-control" name="middleName" placeholder="First name" aria-label="First name" onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label
+										for="floatingInput">Enter middleName</label>
 								</div>
 							</div>
 							<div class="col">
 								<span id="error1"></span>
 								<div class="form-floating mb-3">
-									<input type="text" onblur="validatelastName()" id="lastname" class="form-control" name="lastName" placeholder="Last name" aria-label="Last name" onkeydown="return /[a-zA-Z]/i.test(event.key)" required="required"> <label for="floatingInput">Enter
-										lastName</label>
+									<input type="text" onblur="validatelastName()" id="lastname" class="form-control" name="lastName" placeholder="Last name" aria-label="Last name" onkeydown="return /[a-zA-Z]/i.test(event.key)"
+										required="required"> <label for="floatingInput">Enter lastName</label>
 								</div>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col">
-							<span id="error2"></span>
+								<span id="error2"></span>
 								<div class="form-floating mb-3">
-									<input type="number" class="form-control" onblur="validateaadhar()" id="aadhar" name="aadharNumber" id="floatingInput" placeholder="enter state" onKeyPress="if(this.value.length==12) return false;" required="required"> <label for="floatingInput">Enter aadharNumber</label>
+									<input type="number" class="form-control" onblur="validateaadhar()" id="aadhar" name="aadharNumber" id="floatingInput" placeholder="enter state" onKeyPress="if(this.value.length==12) return false;"
+										required="required"> <label for="floatingInput">Enter aadharNumber</label>
 								</div>
 							</div>
 							<div class="col">
 								<div class="form-floating mb-3">
 									<input type="email" class="form-control" name="email" id="floatingInput" placeholder="enter state" required="required"> <label for="floatingInput">Enter email</label>
 								</div>
+								<font color="red"><h6>${error}</h6></font>
 							</div>
 							<div class="col">
 								<div class="form-floating mb-3">
-									<input type="number" class="form-control" name="contactNumber" id="floatingInput" placeholder="enter state" onKeyPress="if(this.value.length==10) return false;" required="required"> <label for="floatingInput">Enter contactNumber</label>
+									<input type="tel" class="form-control" name="contactNumber" id="floatingInput" placeholder="enter state" onKeyPress="if(this.value.length==10) return false;" required="required"> <label
+										for="floatingInput">Enter contactNumber</label>
 								</div>
+								<font color="red"><h6>${error1}</h6></font>
 							</div>
 						</div>
 
@@ -216,7 +226,8 @@
 						<div class="row">
 							<div class="col">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" name="placeOfBirth" id="floatingInput" onkeydown="return /[a-zA-Z]/i.test(event.key)" placeholder="enter placeOfBirth" required="required"> <label for="floatingInput">Enter placeOfBirth</label>
+									<input type="text" class="form-control" name="placeOfBirth" id="floatingInput" onkeydown="return /[a-zA-Z]/i.test(event.key)" placeholder="enter placeOfBirth" required="required"> <label
+										for="floatingInput">Enter placeOfBirth</label>
 								</div>
 							</div>
 							<div class="col">
@@ -226,7 +237,8 @@
 							</div>
 							<div class="col">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" name="qualification" onkeydown="return /[a-zA-Z]/i.test(event.key)" id="floatingInput" placeholder="enter qualification" required="required"> <label for="floatingInput">Enter qualification</label>
+									<input type="text" class="form-control" name="qualification" onkeydown="return /[a-zA-Z]/i.test(event.key)" id="floatingInput" placeholder="enter qualification" required="required"> <label
+										for="floatingInput">Enter qualification</label>
 								</div>
 							</div>
 						</div>

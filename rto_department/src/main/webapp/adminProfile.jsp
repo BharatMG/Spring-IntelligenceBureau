@@ -31,7 +31,11 @@
 			<div class="d-flex">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" role="button" name="firstName" href=""><b>Hi,${d}</b></a></li>
+						<li class="nav-item"><a class="nav-link" role="button" name="firstName"><b>Hi,${d}</b></a></li>
+					</ul>
+
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link" role="button" href="SignUp.jsp"><b>Sign Up</b></a></li>
 					</ul>
 
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -42,7 +46,7 @@
 		</div>
 	</nav>
 
-<div>
+	<div>
 		<form action="searchByState" method="get">
 			<div>
 				<br> <input type="search" name="state" placeholder="search"> <input type="submit">
@@ -64,7 +68,7 @@
 							<th>LastName</th>
 							<th>dateOfBirth</th>
 							<th>emailId</th>
-					 		<th>mobileNumber</th>
+							<th>mobileNumber</th>
 							<th>State</th>
 							<th>Place</th>
 							<th>password</th>
@@ -84,7 +88,7 @@
 								<td>${dto.confirmPassword}</td>
 								<td>${dto.registereDateTime}</td>
 							</tr>
-				</c:forEach>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
